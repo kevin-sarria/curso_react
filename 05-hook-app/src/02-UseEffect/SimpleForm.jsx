@@ -1,75 +1,67 @@
-import { useState, useEffect } from "react"
-import { Message } from './Message'
+import { useEffect, useState } from 'react';
+import { Message } from './Message';
 
 
 export const SimpleForm = () => {
-  
-  
+
     const [formState, setFormState] = useState({
-        username: 'Estaduardo',
-        email: 'correo2000@correo.com'
+        username: 'strider',
+        email: 'fernando@google.com'
     });
 
     const { username, email } = formState;
-  
+
     const onInputChange = ({ target }) => {
         const { name, value } = target;
-
-
         setFormState({
-
             ...formState,
             [ name ]: value
-
         });
-
     }
 
 
-    // useEffect( () => {
-    //     console.log('UseEffect');
-    // }, [] );
-
-
-    // useEffect( () => {
-    //     console.log('UseEffect');
-    // }, [formState] );
-
-
-
-
-  
-    return (
-    <>
+    useEffect( () => {
+        // console.log('useEffect called!');
+    }, []);
     
-        <h1>Formulario Simple</h1>
+    useEffect( () => {
+        // console.log('formState changed!');
+    }, [formState]);
 
-        <hr />
+    useEffect( () => {
+        // console.log('email changed!');
+    }, [ email ]);
 
-        <input 
-            type="text" 
-            className="form-control mt-2" 
-            placeholder="username" 
-            name="username" 
-            value={username}
-            onChange={ onInputChange }
-        />
+    
 
-        <input 
-            type="email" 
-            className="form-control mt-2" 
-            placeholder="correo@correo.com" 
-            name="email"
-            value={email} 
-            onChange={ onInputChange }
-        />
+    return (
+        <>
+            <h1>Formulario Simple</h1> 
+            <hr />
 
-        {
+            <input 
+                type="text" 
+                className="form-control"
+                placeholder="Username"
+                name="username"
+                value={ username }
+                onChange={ onInputChange }
+            />
 
-            (username == 'Estaduardo2') && <Message />
+            <input 
+                type="email" 
+                className="form-control mt-2"
+                placeholder="fernando@google.com"
+                name="email"
+                value={ email }
+                onChange={ onInputChange }
+            />
 
-        }
 
-    </>
-  )
+            {
+                (username === 'strider2' ) && <Message />
+            }
+
+        </>
+    )
 }
