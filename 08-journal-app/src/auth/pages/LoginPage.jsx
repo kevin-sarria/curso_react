@@ -33,6 +33,7 @@ export const LoginPage = () => {
 
   const onGoogleSingIn = () => {
 
+    // console.log('OnGoogleSingIn');
     dispatch( startGoogleSingIn() );
 
   }
@@ -101,6 +102,7 @@ export const LoginPage = () => {
             <Grid item xs={12} sm={6}>
               <Button
                 onClick={ onGoogleSingIn }
+                aria-label="google-btn"
                 disabled={ isAuthenticating }
                 variant='contained'
                 fullWidth
